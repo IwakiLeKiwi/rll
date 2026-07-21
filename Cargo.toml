@@ -1,9 +1,12 @@
 [package]
-name = "rll"
-version = "0.1.0"
-edition = "2024"
+name        = "rll"
+version     = "0.0.1"
+author      = "Iwaki"
+description = "A rust library designed to download and launch minecraft"
+license     = "MIT"
+edition     = "2024"
 
 [dependencies]
 reqwest = { version = "0.13.4", features = ["json"] }
-serde = { version = "1.0.229", features = ["derive"] }
-tokio = { version = "1.53.1", features = ["full"] }
+serde   = { version = "1.0.229", features = ["derive"] }
+tokio   = { version = "1.53.1", features = ["full"] }
