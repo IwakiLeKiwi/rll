@@ -27,9 +27,16 @@
 # Current State
 This library is in early development
 - [ ] Vanilla install
+- [ ] Java install
 - [ ] Game launch
 - [ ] Microsoft authentification
 - [ ] Modloader installation (Forge, Fabric, NeoForge)
+
+# Libraries used
+Here are the main libraries used in this project :
+- [reqwest](https://crates.io/crates/reqwest)
+- [serde](https://crates.io/crates/serde)
+- [tokio](https://crates.io/crates/tokio)
   
 # Thanks
 This library is inspired by <a href="https://github.com/FlowArg/FlowUpdater">Flow Updater</a>, a great library used to make launchers in Java.
