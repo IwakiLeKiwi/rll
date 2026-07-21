@@ -30,7 +30,10 @@ This library is in early development
 - [ ] Java install
 - [ ] Game launch
 - [ ] Microsoft authentification
-- [ ] Modloader installation (Forge, Fabric, NeoForge)
+- [ ] Modloader installation :
+* - [ ] Forge
+* - [ ] Fabric
+* - [ ] Neoforge
 
 # Libraries used
 Here are the main libraries used in this project :
