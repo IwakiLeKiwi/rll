@@ -17,11 +17,11 @@ impl LibraryArtifact {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct LibraryDownloads {
-    artifact: LibraryArtifact 
+    artifact: Option<LibraryArtifact>,
 }
 
 impl LibraryDownloads {
-    pub fn artifact(&self) -> &LibraryArtifact { &self.artifact }
+    pub fn artifact(&self) -> &Option<LibraryArtifact> { &self.artifact }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
