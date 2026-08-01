@@ -12,12 +12,14 @@ pub struct VersionManifest {
     asset_index: AssetIndex,
     downloads: Downloads,
     libraries: Vec<Library>,
+    id: String,
 }
 
 impl VersionManifest {
     pub fn asset_index(&self) -> &AssetIndex { &self.asset_index }
     pub fn downloads(&self) -> &Downloads { &self.downloads }
     pub fn libraries(&self) -> &[Library] { &self.libraries }
+    pub fn id(&self) -> &str { &self.id }
 }
 
 #[derive(Debug, Serialize, Deserialize)]
