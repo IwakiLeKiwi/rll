@@ -1,4 +1,4 @@
-use crate::update::{structs::{VersionManifest, mc_assets::{AssetIndex, AssetRoot}, mc_versions::Versions}, updater::Updater};
+use crate::update::{structs::{VersionManifest, mc_assets::AssetRoot, mc_versions::Versions}, updater::Updater};
 
 pub mod structs;
 
@@ -22,7 +22,7 @@ impl Updater {
         })
     }
 
-    pub fn get_version_manifest(&self) -> Result<VersionManifest, reqwest::Error> {
+    pub fn get_version_manifest(&self) -> Result<(VersionManifest, String), reqwest::Error> {
         let client = reqwest::Client::new();
         let runtime = tokio::runtime::Runtime::new().unwrap();
 
@@ -30,16 +30,19 @@ impl Updater {
         
         let url = versions
             .get_version_url(&self.version())
-            .expect("No version found!");
+            .expect("No version found!")
+            .to_string();
         
-        runtime.block_on(async {
+        let manifest = runtime.block_on(async {
             client
-                .get(url)
+                .get(&url)
                 .send()
                 .await?
                 .json()
                 .await
-        })
+        })?;
+
+        Ok((manifest, url))
     }
 
     pub fn get_assets_manifest(&self, url: &str) -> Result<AssetRoot, reqwest::Error> {
