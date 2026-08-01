@@ -1,4 +1,4 @@
-use crate::update::{downloader::{download_assets, download_libraries}, utils::get_relative_local_dir_path};
+use crate::update::{downloader::Downloader, utils::get_relative_local_dir_path};
 
 pub struct Updater {
     version: String,
@@ -16,7 +16,7 @@ impl Updater {
     pub fn install_files(&mut self) {
         println!("----- Installation of files -----");
 
-        let v_manifest = self
+        let (v_manifest, v_manifest_url) = self
             .get_version_manifest()
             .unwrap();
 
@@ -25,10 +25,20 @@ impl Updater {
             .unwrap();
 
         let runtime = tokio::runtime::Runtime::new().unwrap();
-        
+        let downloader = Downloader::new(self.local_dir_path.clone());
+
         runtime.block_on(async {
-            download_libraries(v_manifest.libraries()).await;
-            download_assets(asset_manifest.objects()).await;
+        
+            downloader.download_libraries(
+                v_manifest.libraries()
+            ).await;
+            downloader.download_assets(
+                asset_manifest.objects()
+            ).await;
+            downloader.download_game_files(
+                &v_manifest,
+                &v_manifest_url
+            ).await;
         });
 
         println!("----- Installation completed -----");
