@@ -69,30 +69,24 @@ It aims to provide the core functionality needed to install and manage Minecraft
 
 ## 🚀 Usage
 
-### Install files (Vanilla)
+### Update files 
 
-First, to launch the game, we need an `Updater` object.
-```rust
-let mut updater = Updater::new("1.20.1");
-```
-Then, specify the location of the installation directory.<br>
-On Windows, the default location is `%APPDATA%`, while on Linux it is usually `$HOME`.
-```rust
-updater.set_relative_local_dir_path(".rll");
-```
-Finally, we can install the game files:
-```rust
-updater.install_files();
-```
+> [!NOTE]
+> TODO
 
 ### Launch
 
-> [!IMPORTANT]
-> Todo
+> [!NOTE]
+> TODO
+
+### Auth
+
+> [!NOTE]
+> TODO
 
 ## 📦 Dependencies
 
-Here are the main Rust crates used in this project:
+Here are the **main** Rust crates used in this project:
 * [`reqwest`](https://crates.io/crates/reqwest)
 * [`serde`](https://crates.io/crates/serde)
 * [`tokio`](https://crates.io/crates/tokio)
